@@ -36,7 +36,9 @@ const styles = {
     },
     section: {
         marginBottom: '40px',
-        backgroundColor: 'pink',
+        backgroundColor: 'white',
+        border: '2px solid purple',
+        borderRadius: '0.5rem',
         padding: '2rem',
         width: '60%',
         display: 'flex',

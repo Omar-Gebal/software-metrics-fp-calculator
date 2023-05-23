@@ -190,7 +190,7 @@ export default function UFPCalculator(){
 
 const styles= {
     button: {
-        marginTop: '0.5rem',
+        marginTop: '1rem',
 
     }
 };
