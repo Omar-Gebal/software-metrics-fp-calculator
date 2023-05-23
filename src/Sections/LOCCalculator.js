@@ -3,29 +3,6 @@ import { useSelector,useDispatch } from "react-redux";
 import { updateAVC, updateLOC } from "../state/numberSlice";
 import { AVCvalues } from "../consts";
 
-const Table = () => {
-    return (
-      <div>
-        <h3>AVC Values</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Language</th>
-              <th>LOC/FP</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(AVCvalues).map(([language, locFp]) => (
-              <tr key={language}>
-                <td>{language}</td>
-                <td>{locFp}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  };
 
 export default function LOCCalculator(){
     const dispatch = useDispatch()
