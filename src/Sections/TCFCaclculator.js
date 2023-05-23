@@ -21,10 +21,10 @@ const FactorInput = ({ label, value, onChange }) => {
     };
   
     return (
-        <div>
-          <label>
+        <div >
+          <label style={styles.detailedDI}>
             {label}
-            <select value={value} onChange={handleChange}>
+            <select style={styles.marginVertical} value={value} onChange={handleChange}>
               {descriptions.map((description, index) => (
                 <option key={index} value={index}>
                   {description}
@@ -41,20 +41,20 @@ const FactorInput = ({ label, value, onChange }) => {
 const FactorMenu = () => {
 
     const factors = [
-        { label: 'Complexity of the Data Element', state: useState(0) },
-        { label: 'Complexity of the Record Element', state: useState(0) },
-        { label: 'Number of Data Elements', state: useState(0) },
-        { label: 'Number of Record Elements', state: useState(0) },
-        { label: 'Data Elements Referenced', state: useState(0) },
-        { label: 'Record Elements Referenced', state: useState(0) },
-        { label: 'Number of Files', state: useState(0) },
-        { label: 'Number of Data Element Types', state: useState(0) },
-        { label: 'Number of Record Element Types', state: useState(0) },
-        { label: 'Number of Outputs', state: useState(0) },
-        { label: 'Internal Logical File Complexity', state: useState(0) },
-        { label: 'External Interface File Complexity', state: useState(0) },
-        { label: 'Data Communication Complexity', state: useState(0) },
+        { label: 'Data Communications', state: useState(0) },
+        { label: 'Distributed Data Processing', state: useState(0) },
         { label: 'Performance', state: useState(0) },
+        { label: 'Heavily Used Configuration', state: useState(0) },
+        { label: 'Transaction Rate', state: useState(0) },
+        { label: 'Online Data Entry', state: useState(0) },
+        { label: 'End-User Efficiency', state: useState(0) },
+        { label: 'Online Update', state: useState(0) },
+        { label: 'Complex Processing', state: useState(0) },
+        { label: 'Resusability', state: useState(0) },
+        { label: 'Installation Ease', state: useState(0) },
+        { label: 'Operational Ease', state: useState(0) },
+        { label: 'Multiple Sites', state: useState(0) },
+        { label: 'Facilitate Change', state: useState(0) },
       ];
       
     const [totalDI, setTotalDI] = useState(0);
@@ -66,18 +66,21 @@ const FactorMenu = () => {
       };
 
     return (
-        <div>
-            <h3>Data Inputs Factors</h3>
-            {factors.map((factor, index) => (
-                <FactorInput
-                    key={index}
-                    label={factor.label}
-                    value={factor.state[0]}
-                    onChange={(newValue) => {
-                        factor.state[1](newValue);
-                    }}
-                />
-            ))}
+        <div style={styles.detailedDI}>
+            <h3 style={styles.bold}>Rating for each factor</h3>
+            
+            <div style={styles.detailedDI}>
+              {factors.map((factor, index) => (
+                  <FactorInput
+                      key={index}
+                      label={factor.label}
+                      value={factor.state[0]}
+                      onChange={(newValue) => {
+                          factor.state[1](newValue);
+                      }}
+                  />
+              ))}
+            </div>
             <button onClick={calculateTotalDI}>Calculate Total DI</button>
             <h4>Total DI: {totalDI}</h4>
         </div>
@@ -110,13 +113,14 @@ export default function TCFCalculator(){
     
   
     return (
-       <section>
+       <section style={styles.section}>
             <h1>TCF Calculator</h1>
-            {!showFactors && <label>
+            {!showFactors && <label style={{...styles.textCenter}}>
                 Enter total DI:
+                <br/>
                 <input type="number" value={DI} onChange={handleInputChange} />
             </label>}
-            <label>
+            <label style={styles.marginBot}>
                 <input type="checkbox" checked={showFactors} onChange={handleCheckboxChange} />
                 Detailed DI
             </label>
@@ -130,4 +134,29 @@ export default function TCFCalculator(){
 }
 
 const styles= {
+  section: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textCenter:{
+    textAlign: 'center',
+  },
+  marginBot: {
+    marginBottom: '1rem',
+  },
+  detailedDI:{
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    alignItems:"stretch",
+    justifyContent: 'center',
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  marginVertical:{
+    marginTop: '1rem',
+    marginBottom: '1rem',
+  }
 };

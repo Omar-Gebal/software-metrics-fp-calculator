@@ -44,13 +44,13 @@ export default function LOCCalculator(){
       };
     
     return (
-       <section>
+       <section style={styles.section}>
             <h1>LOC Calculator</h1>
             <div>
-            <h3>Programming Language Selection</h3>
+            <h3 style={styles.label}>Programming Language Selection</h3>
             <label>
                 Select a language:
-                <select value={selectedLanguage} onChange={handleLanguageChange}>
+                <select style={styles.marginVertical} value={selectedLanguage} onChange={handleLanguageChange}>
                 <option value="">-- Select Language --</option>
                 {Object.keys(AVCvalues).map((language) => (
                     <option key={language} value={language}>
@@ -60,10 +60,10 @@ export default function LOCCalculator(){
                 </select>
             </label>
             {selectedLanguage && (
-                <div>
-                <h4>LOC/FP: {AVC}</h4>
-                <button onClick={calculateLOC}>Calculate LOC</button>
-                {LOC && <h4>LOC: {LOC}</h4>}
+                <div style={styles.section}>
+                    <h4>LOC/FP: {AVC}</h4>
+                    <button onClick={calculateLOC}>Calculate LOC</button>
+                    {LOC && <h4>LOC: {LOC}</h4>}
                 </div>
                 
             )}
@@ -73,4 +73,15 @@ export default function LOCCalculator(){
 }
 
 const styles= {
+    label:{
+        fontWeight: "bold",
+    },
+    section:{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+    },
+    marginVertical:{
+        margin: "0 1rem"
+    }
 };

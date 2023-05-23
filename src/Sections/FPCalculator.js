@@ -23,11 +23,14 @@ export default function FPCalculator(){
            
             </label>
             <br />
-            <button onClick={calculateFP}>Calculate FP</button>
+            <button style={styles.margingVertical} onClick={calculateFP}>Calculate FP</button>
             <h4>FP: {FP}</h4>
        </section>
     );
 }
 
 const styles= {
+  margingVertical:{
+    margin: "1rem 0"
+  }
 };
